@@ -1,3 +1,6 @@
+[![](https://visitcount.itsvg.in/api?id=ChanBotCoder&icon=5&color=12)](https://visitcount.itsvg.in)
+
+
 # 💫 About Me:
 🔭 I’m currently working on<br>👯 I’m looking to collaborate on<br>🤝 I’m looking for help with<br>🌱 I’m currently learning<br>💬 Ask me about<br>⚡ Fun fact
 
@@ -21,10 +24,7 @@
 ### 🔝 Top Contributed Repo
 ![](https://github-contributor-stats.vercel.app/api?username=ChanBotCoder&limit=5&theme=dark&combine_all_yearly_contributions=true)
 
-### 😂 Random Dev Meme
-<img src='https://randommeme-five.vercel.app/' style="height: 400px;"/>
 
 ---
 [![](https://visitcount.itsvg.in/api?id=ChanBotCoder&icon=5&color=12)](https://visitcount.itsvg.in)
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
