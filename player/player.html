@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Youtube Playlist Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .controller {
+            position: fixed;
+            top: 480px;
+            left: 560px;
+        }
+        #thumbnail {
+            position: fixed;
+            top: 40px;
+            left: 490px;
+        }
+        #current-time,
+        #total-time {
+            color: white;
+            display: inline-block;
+            /* margin: 0 10px; */
+        }
+        .range {
+            position: fixed;
+            top: 430px;
+            left: 520px;
+        }
+        .fa-youtube-play {
+            margin-right: 10px;
+        }
+        .title {
+            color: white;
+            display: inline;
+            font-size: 24px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+
+    <i class="fa fa-youtube-play" style="font-size:30px;color:red"></i>
+    <p class="title">Youtube Playlist Player</p>
+
+    <img id="thumbnail" src="Raayan_poster.jpg" alt="Thumbnail image">
+
+    <div class="range">
+        <p id="current-time">0:00</p>
+        <input type="range" id="progress-bar" min="0" max="200" value="0" step="1">
+        <p id="total-time">0:00</p>
+    </div>
+
+    <div class="controller">
+
+        <button id="prev" type="button">
+            <i style="font-size:24px" class="fa fa-backward"></i>
+        </button>
+
+        <button id="play" type="button">
+            <i id="play-icon" style="font-size:24px" class="fa fa-play"></i>
+            <i id="pause-icon" style="font-size:24px" class="fa fa-pause hidden"></i>
+        </button>
+
+        <button id="next" type="button">
+            <i style="font-size:24px" class="fa fa-forward"></i>
+        </button>
+        
+    </div>
+
+    <audio id="audio" src="Adangaatha Asuran.mp3"></audio>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playButton = document.getElementById('play');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeElement = document.getElementById('current-time');
+        const totalTimeElement = document.getElementById('total-time');
+
+        playButton.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            } else {
+                audio.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+        });
+
+        audio.addEventListener('loadedmetadata', function() {
+            progressBar.max = Math.floor(audio.duration);
+            totalTimeElement.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', function() {
+            progressBar.value = Math.floor(audio.currentTime);
+            currentTimeElement.textContent = formatTime(audio.currentTime);
+        });
+
+        progressBar.addEventListener('input', function() {
+            audio.currentTime = progressBar.value;
+        });
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+    </script>
+</body>
+</html>
